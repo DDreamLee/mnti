@@ -1,8 +1,9 @@
 interface Props {
   onStart: () => void
+  onGallery: () => void
 }
 
-export default function WelcomeScreen({ onStart }: Props) {
+export default function WelcomeScreen({ onStart, onGallery }: Props) {
   return (
     <div className="screen welcome-screen">
       <div className="welcome-content">
@@ -25,6 +26,10 @@ export default function WelcomeScreen({ onStart }: Props) {
 
         <button className="btn-start" onClick={onStart}>
           <span className="btn-prefix">$</span> ./start-test.sh
+        </button>
+
+        <button className="btn-gallery" onClick={onGallery}>
+          查看所有结局 →
         </button>
 
         <p className="welcome-note">大约需要 5 分钟</p>

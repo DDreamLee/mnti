@@ -2,22 +2,27 @@ import { useState } from 'react'
 import WelcomeScreen from './components/WelcomeScreen'
 import QuestionScreen from './components/QuestionScreen'
 import ResultScreen from './components/ResultScreen'
-import { buildProfile, findPersonality } from './utils/scoring'
+import GalleryScreen from './components/GalleryScreen'
+import { buildProfile, findPersonality, findSecondPersonality } from './utils/scoring'
 import { PersonalityType, Profile } from './types'
 import './App.css'
 
-type Screen = 'welcome' | 'questions' | 'calculating' | 'result'
+type Screen = 'welcome' | 'questions' | 'calculating' | 'result' | 'gallery'
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>('welcome')
   const [answers, setAnswers] = useState<number[]>([])
   const [result, setResult] = useState<PersonalityType | null>(null)
+  const [second, setSecond] = useState<PersonalityType | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
 
   function handleStart() {
     setAnswers([])
     setScreen('questions')
   }
+
+  function handleGallery() { setScreen('gallery') }
+  function handleBackFromGallery() { setScreen('welcome') }
 
   function handleAnswer(questionIndex: number, optionIndex: number) {
     setAnswers(prev => {
@@ -33,8 +38,10 @@ export default function App() {
       const finalAnswers = [...answers]
       const p = buildProfile(finalAnswers)
       const r = findPersonality(p)
+      const r2 = findSecondPersonality(p)
       setProfile(p)
       setResult(r)
+      setSecond(r2)
       setScreen('result')
     }, 1800)
   }
@@ -42,13 +49,15 @@ export default function App() {
   function handleRestart() {
     setScreen('welcome')
     setResult(null)
+    setSecond(null)
     setProfile(null)
     setAnswers([])
   }
 
   return (
     <div className="app">
-      {screen === 'welcome' && <WelcomeScreen onStart={handleStart} />}
+      {screen === 'welcome' && <WelcomeScreen onStart={handleStart} onGallery={handleGallery} />}
+      {screen === 'gallery' && <GalleryScreen onBack={handleBackFromGallery} />}
       {screen === 'questions' && (
         <QuestionScreen
           onAnswer={handleAnswer}
@@ -65,7 +74,7 @@ export default function App() {
         </div>
       )}
       {screen === 'result' && result && profile && (
-        <ResultScreen result={result} profile={profile} onRestart={handleRestart} />
+        <ResultScreen result={result} second={second} profile={profile} onRestart={handleRestart} />
       )}
     </div>
   )

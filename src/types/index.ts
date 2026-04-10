@@ -14,6 +14,7 @@ export interface PersonalityType {
   code: string
   name: string
   description: string
+  growth: string
   profile: Profile
   isSpecial?: boolean
 }

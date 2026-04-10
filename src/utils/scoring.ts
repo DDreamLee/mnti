@@ -18,8 +18,8 @@ export function buildProfile(answers: number[]): Profile {
 }
 
 function scoreToTier(sum: number): DimScore {
-  if (sum <= 6) return 'L'
-  if (sum <= 9) return 'M'
+  if (sum <= 5) return 'L'
+  if (sum <= 8) return 'M'
   return 'H'
 }
 
@@ -43,24 +43,25 @@ export function findPersonality(profile: Profile) {
   }
 
   const standard = personalities.filter(p => !p.isSpecial)
-  let bestMatch = standard[0]
-  let bestDistance = Infinity
+  const ranked = standard
+    .map(p => ({ p, d: manhattanDistance(profile, p.profile) }))
+    .sort((a, b) => a.d - b.d)
 
-  for (const p of standard) {
-    const d = manhattanDistance(profile, p.profile)
-    if (d < bestDistance) {
-      bestDistance = d
-      bestMatch = p
-    }
-  }
-
-  // Max possible distance = 18 dims * 2 = 36
-  const matchPct = (1 - bestDistance / 36) * 100
+  const best = ranked[0]
+  const matchPct = (1 - best.d / 36) * 100
   if (matchPct < 60) {
     return personalities.find(p => p.code === 'NULL')!
   }
 
-  return bestMatch
+  return best.p
+}
+
+export function findSecondPersonality(profile: Profile) {
+  const standard = personalities.filter(p => !p.isSpecial)
+  const ranked = standard
+    .map(p => ({ p, d: manhattanDistance(profile, p.profile) }))
+    .sort((a, b) => a.d - b.d)
+  return ranked[1]?.p ?? null
 }
 
 export const MODELS = [
