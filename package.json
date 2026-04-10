@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "gen-avatars": "npx tsx scripts/gen-avatars.tsx",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
