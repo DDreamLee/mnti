@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# MNTI(**M**a **N**ong **T**ype **I**ndicator) Personalities 码农人格测试 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
