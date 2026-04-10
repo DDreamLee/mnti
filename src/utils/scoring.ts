@@ -37,7 +37,17 @@ function isRMRF(profile: Profile): boolean {
   return profile[6] === 'L' && profile[9] === 'L' && profile[16] === 'H' && profile[3] === 'L'
 }
 
+// SELF hidden type: triggered when the user is basically an AI
+// AI依赖H(15) + AI信任H(16) + AI焦虑L(17) + 抽象欲H(1) + 系统性H(3)
+function isSELF(profile: Profile): boolean {
+  return profile[15] === 'H' && profile[16] === 'H' && profile[17] === 'L'
+      && profile[1] === 'H' && profile[3] === 'H'
+}
+
 export function findPersonality(profile: Profile) {
+  if (isSELF(profile)) {
+    return personalities.find(p => p.code === 'SELF')!
+  }
   if (isRMRF(profile)) {
     return personalities.find(p => p.code === 'RMRF')!
   }

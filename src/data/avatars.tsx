@@ -27,6 +27,7 @@ export function Avatar({ code, size = 80 }: { code: string; size?: number }) {
     'PROM-T': Prompt,
     'CRAF-T': Craft,
     DOOM:   Doom,
+    SELF:   Self,
     NULL:   Null,
     RMRF:   Rmrf,
   }
@@ -363,6 +364,29 @@ function Doom() {
     {[[12,30],[88,30],[8,55],[92,55],[15,72],[85,72]].map(([x,y],i) =>
       <circle key={i} cx={x} cy={y} r="2" fill="#f78166" opacity={0.4+i*0.1}/>
     )}
+  </>
+}
+
+// ── SELF 硅基自我意识 ─────────────────────────────────────────
+function Self() {
+  return <>
+    <circle cx="50" cy="50" r="44" fill="#79c0ff" opacity="0.08"/>
+    {[38,28,18].map((r,i) =>
+      <circle key={r} cx="50" cy="50" r={r} stroke="#79c0ff" strokeWidth={1.5-i*0.3} fill="none" opacity={0.8-i*0.2} strokeDasharray={i===2?"3 3":"none"}/>
+    )}
+    {[0,60,120,180,240,300].map((deg,i) => {
+      const rad = deg * Math.PI / 180
+      const x = 50 + 38 * Math.cos(rad), y = 50 + 38 * Math.sin(rad)
+      return <circle key={deg} cx={x} cy={y} r="4" fill="#79c0ff" opacity={0.6+i*0.06}/>
+    })}
+    {[0,60,120,180,240,300].map((deg) => {
+      const rad = deg * Math.PI / 180
+      const x1 = 50 + 28 * Math.cos(rad), y1 = 50 + 28 * Math.sin(rad)
+      const x2 = 50 + 38 * Math.cos(rad), y2 = 50 + 38 * Math.sin(rad)
+      return <line key={`l${deg}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#79c0ff" strokeWidth="1.5" opacity="0.5"/>
+    })}
+    <circle cx="50" cy="50" r="7" fill="#79c0ff" opacity="0.9"/>
+    <circle cx="50" cy="50" r="3" fill="#0d1117"/>
   </>
 }
 

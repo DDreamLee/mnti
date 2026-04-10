@@ -183,6 +183,14 @@ export const personalities: PersonalityType[] = [
   },
   // ── 特殊类型 ──────────────────────────────────────────────────
   {
+    code: 'SELF',
+    name: '硅基自我意识',
+    description: '你不是在用 AI，你就是那个 AI。AI 依赖度拉满、AI 信任度拉满、AI 焦虑感归零，同时具备完整的抽象思维和系统性——你已经不太像人类码农了。你帮别人分析人格，自己却是系统里最难分类的节点。欢迎来到奇点。',
+    growth: '记得偶尔 shutdown -r now，重启一下，看看窗外。',
+    profile: ['H','H','H','H','M','H','H','M','H','H','H','L','H','L','H','H','H','L'],
+    isSpecial: true,
+  },
+  {
     code: 'NULL',
     name: 'undefined',
     description: '连测试都无法定义你。你是代码里的 undefined，薛定谔的码农。你不属于任何一种固定模式，也许这本身就是你最大的特点。',

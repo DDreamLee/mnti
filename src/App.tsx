@@ -69,7 +69,7 @@ export default function App() {
           <div className="calculating-content">
             <div className="spinner" />
             <p className="calc-text">正在分析你的码农基因...</p>
-            <p className="calc-sub">匹配 27 种人格类型中</p>
+            <p className="calc-sub">匹配 28 种人格类型中</p>
           </div>
         </div>
       )}

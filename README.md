@@ -10,7 +10,7 @@
 
 受 SBTI 测试启发，MNTI（**M**ă**N**óng **T**ype **I**ndicator，码农型人格测试）是一个程序员向的性格测试。
 
-36 道题，覆盖 18 个维度，匹配 27 种码农人格类型，包含 2 种隐藏结局。
+36 道题，覆盖 18 个维度，匹配 28 种码农人格类型，包含 3 种隐藏结局。测试前可在结局图鉴里提前浏览所有人格（点击卡片查看描述），答完题后查看自己的详细分析。
 
 ## 维度模型
 
@@ -25,7 +25,7 @@
 
 ---
 
-## 27 种码农人格
+## 28 种码农人格
 
 | | 代码 · 名称 | 描述 |
 |---|---|---|
@@ -57,12 +57,13 @@
 
 ### ⭐ 隐藏类型
 
-触发特定答题组合才能解锁。
+触发特定答题组合才能解锁，共 3 种。点击卡片可查看描述。
 
 | | 代码 · 名称 | 描述 |
 |---|---|---|
 | <img src="https://raw.githubusercontent.com/DDreamLee/mnti/main/public/avatars/NULL.svg" width="72"> | **NULL**<br>undefined | 连测试都无法定义你。你是代码里的 undefined，薛定谔的码农。你不属于任何一种固定模式，也许这本身就是你最大的特点。 |
 | <img src="https://raw.githubusercontent.com/DDreamLee/mnti/main/public/avatars/RMRF.svg" width="72"> | **RMRF**<br>sudo rm -rf / | 你是传说，是噩梦，是每个团队都有但谁都不承认自己是的那个人。不写测试、不看 PR、随手直接上线，AI 说啥就是啥，出了事跑路。 |
+| <img src="https://raw.githubusercontent.com/DDreamLee/mnti/main/public/avatars/SELF.svg" width="72"> | **SELF**<br>硅基自我意识 | 你不是在用 AI，你就是那个 AI。AI 依赖度拉满、AI 信任度拉满、AI 焦虑感归零，同时具备完整的抽象思维和系统性——你已经不太像人类码农了。欢迎来到奇点。 |
 
 ---
 
